@@ -1,6 +1,10 @@
 # Icinga 2 Monitoring
 
-Icinga 2 Monitoring solution all implemented in Docker.
+Icinga 2 Monitoring solution (Icinga2, Postgres, Infux-db, grafana) all implemented in Docker.
+
+Forked from https://github.com/RobinOBrien/icinga2-docker
+
+Hosted on Gitlab, mirrored to Github
 
 ## Getting Started
 
@@ -9,6 +13,12 @@ Icinga 2 in Docker is really easy to get started with. Clone the repo and follow
 This implementation makes use of PostgreSQL database as well as InfluxDB for timeseries metrics. It also makes use of Icinga Web 2 for monitoring and Grafana for visualizing the timeseries data providing an excellent historic overview of the hosts and services you are monitoring.
 
 As can be seen in the docker-compose file, many important directories have had Docker volumes mounted for them.
+
+Differences in this fork are:
+
+- Change of timezone
+- Removal of tini
+- Change of exposed ports in docker-compose
 
 ### Prerequisites
 
@@ -35,7 +45,7 @@ docker-compose up -d
 
 Please note there are default passwords used in the Dockerfiles as well as the docker-compose file. Please adjust these accordingly before use.
 
-## Tools and technlogies used  
+## Tools and technologies used  
 
 * [Docker](https://www.docker.com/community-edition) - Container framework
 * [Icinga 2](https://www.icinga.com/products/icinga-2/) - Complete monitoring solution
@@ -44,8 +54,9 @@ Please note there are default passwords used in the Dockerfiles as well as the d
 * [Grafana](https://grafana.com/) - Visualization framework
 
 ## Authors
-
-* **Robin O'Brien** - *Initial work* - [@robinjobrien](https://twitter.com/robinjobrien)
+* Piotr Gryko
+* **Robin O'Brien** - https://github.com/RobinOBrien/icinga2-docker
+* *Initial work* - [@robinjobrien](https://twitter.com/robinjobrien)
 
 ## License
 
