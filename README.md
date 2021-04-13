@@ -19,6 +19,7 @@ Differences in this fork are:
 - Change of timezone
 - Removal of tini
 - Change of exposed ports in docker-compose
+- Replacement of wget scripts, with install via deb/yum
 
 ### Prerequisites
 
@@ -55,7 +56,7 @@ Please note there are default passwords used in the Dockerfiles as well as the d
 
 ## Authors
 * Piotr Gryko
-* **Robin O'Brien** - https://github.com/RobinOBrien/icinga2-docker
+* *Robin O'Brien* - https://github.com/RobinOBrien/icinga2-docker
 * *Initial work* - [@robinjobrien](https://twitter.com/robinjobrien)
 
 ## License

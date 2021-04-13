@@ -7,5 +7,5 @@
 # if it thinks it is already running.
 rm -rf /run/httpd/* /tmp/httpd*
 
-/opt/rh/rh-php71/root/usr/sbin/php-fpm &
+/opt/rh/rh-php73/root/usr/sbin/php-fpm &
 exec /usr/sbin/apachectl -DFOREGROUND

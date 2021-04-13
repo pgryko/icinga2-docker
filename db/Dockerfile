@@ -1,24 +1,18 @@
-FROM postgres
+FROM postgres:13.2
 
-# Update container
-RUN apt-get update -y
-RUN apt-get install wget -y
+RUN cat /etc/os-release
 
-# Add initialisation scripts
-COPY src/initdb/ /docker-entrypoint-initdb.d/
+RUN apt-get update --fix-missing; \
+apt-get install -y apt-transport-https wget gnupg; \
+wget -O- https://packages.icinga.com/icinga.key | apt-key add -; \
+echo "deb https://packages.icinga.com/debian icinga-buster main" > /etc/apt/sources.list.d/buster-icinga.list ; \
+apt-get update -y; \
+DEBIAN_FRONTEND='noninteractive' apt-get install -y icinga2 monitoring-plugins icinga2-ido-pgsql; \
+apt-get upgrade -y; \
+rm -rf /var/lib/apt/lists/*;
 
-WORKDIR /docker-entrypoint-initdb.d/
-RUN mkdir -p ido_schema
-RUN cd ido_schema
+ADD src/initdb/1-icinga.sh /docker-entrypoint-initdb.d/1-icinga.sh
+RUN chmod +x /docker-entrypoint-initdb.d/1-icinga.sh
 
-# Fetch IDO Schema
-RUN wget -O /docker-entrypoint-initdb.d/ido_schema/pgsql.sql https://raw.githubusercontent.com/Icinga/icinga2/master/lib/db_ido_pgsql/schema/pgsql.sql
-
-# Environment variables
-ENV container docker
-ENV PGDATA /var/lib/postgresql/data/pgdata
-ENV POSTGRES_USER postgres
-ENV DEBIAN_FRONTEND noninteractive
-
-# Open ports
-EXPOSE 5432
+ENV POSTGRES_USER="postgres"
+ENV POSTGRES_HOST_AUTH_METHOD="trust"

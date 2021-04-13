@@ -11,4 +11,4 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
 
 EOSQL
 
-psql -U icinga -d icinga < /docker-entrypoint-initdb.d/ido_schema/pgsql.sql
+psql -U icinga -d icinga < /usr/share/icinga2-ido-pgsql/schema/pgsql.sql
