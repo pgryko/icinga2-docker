@@ -15,6 +15,7 @@ RUN icingacli setup config webserver apache --document-root /usr/share/icingaweb
 # Configure apache for Icingaweb2
 RUN usermod -a -G icingaweb2 apache;
 ADD src/run-httpd.sh /run-httpd.sh
+ADD src/pgsql.schema.sql /usr/share/doc/icingaweb2/schema/pgsql.schema.sql
 RUN chmod -v +x /run-httpd.sh
 
 
