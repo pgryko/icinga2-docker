@@ -2,9 +2,9 @@
 
 Icinga 2 Monitoring solution (Icinga2, Postgres, Infux-db, grafana) all implemented in Docker.
 
-Forked from https://github.com/RobinOBrien/icinga2-docker
+Hosted on [Gitlab](https://gitlab.com/pgryko/icinga2-docker), mirrored to Github
 
-Hosted on Gitlab, mirrored to Github
+Forked from https://github.com/RobinOBrien/icinga2-docker
 
 ## Getting Started
 
